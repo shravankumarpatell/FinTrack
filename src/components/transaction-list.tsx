@@ -292,9 +292,10 @@ export default function TransactionList({
                         <TableCell className={`text-right font-medium ${tx.type === 'income' ? 'text-green-500' : 'text-red-500'}`}>
                           ₹{tx.amount.toFixed(2)}
                         </TableCell>
-                        <TableCell className="text-right">
-                          {format(tx.date.toDate(), 'MMM d, p')}
-                        </TableCell>
+                       <TableCell className="text-right">
+  {/* Change 'MMM d, p' to 'dd/MM/yyyy, p' */}
+  {format(tx.date.toDate(), 'dd/MM/yyyy, p')}
+</TableCell>
                         <TableCell className="text-right">
                           <Button
                             variant="ghost"

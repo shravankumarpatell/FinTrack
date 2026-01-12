@@ -102,26 +102,24 @@ export default function CustomReportDialog({
               From
             </Label>
             <Input
-  id="from-date"
-  type="date"
-  value={fromDate}
-  onChange={(e) => setFromDate(e.target.value)}
-  // Add the invert class here:
-  className="col-span-3 [&::-webkit-calendar-picker-indicator]:dark:invert"
-/>
+              id="from-date"
+              type="date"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+              className="col-span-3 [&::-webkit-calendar-picker-indicator]:dark:invert"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="to-date" className="text-right">
               To
             </Label>
             <Input
-  id="to-date"
-  type="date"
-  value={toDate}
-  onChange={(e) => setToDate(e.target.value)}
-  // Add the invert class here:
-  className="col-span-3 [&::-webkit-calendar-picker-indicator]:dark:invert"
-/>
+              id="to-date"
+              type="date"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+              className="col-span-3 [&::-webkit-calendar-picker-indicator]:dark:invert"
+            />
           </div>
         </div>
         <DialogFooter>

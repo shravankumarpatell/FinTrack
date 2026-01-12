@@ -62,7 +62,7 @@ export const generateMonthlyPDF = async (
   // User info
   doc.setFontSize(12);
   doc.text(`User: ${username}`, 20, 35);
-  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 42);
+  doc.text(`Generated on: ${new Date().toLocaleDateString('en-GB')}`, 20, 42);
   
   // Summary calculations
   const incomeCash = transactions.filter(t => t.type === 'income' && t.category === 'Cash').reduce((sum, t) => sum + t.amount, 0);
@@ -94,7 +94,7 @@ export const generateMonthlyPDF = async (
       tx.category,
       tx.detail || '-',
       tx.amount.toFixed(2),
-      tx.date.toDate().toLocaleDateString(),
+      tx.date.toDate().toLocaleDateString('en-GB'),
     ]);
     
     // @ts-ignore
@@ -131,7 +131,7 @@ export const generateYearlyPDF = async (
     // User info
     doc.setFontSize(12);
     doc.text(`User: ${username}`, 20, 35);
-    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 42);
+    doc.text(`Generated on: ${new Date().toLocaleDateString('en-GB')}`, 20, 42);
     
     // Process each month
     const monthlySummary = [];
@@ -244,7 +244,7 @@ export const generateYearlyPDF = async (
           
           // Month transactions table
           const monthTableData = monthTransactions.map(tx => [
-            tx.date.toDate().toLocaleDateString(),
+            tx.date.toDate().toLocaleDateString('en-GB'),
             tx.type.charAt(0).toUpperCase() + tx.type.slice(1),
             tx.category,
             (tx.detail || '-').substring(0, 20),
@@ -311,8 +311,8 @@ export const generateCustomRangePDF = async (
     // User info and date range
     doc.setFontSize(12);
     doc.text(`User: ${username}`, 20, 35);
-    doc.text(`Date Range: ${fromDate.toLocaleDateString()} to ${toDate.toLocaleDateString()}`, 20, 42);
-    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 49);
+    doc.text(`Date Range: ${fromDate.toLocaleDateString('en-GB')} to ${toDate.toLocaleDateString('en-GB')}`, 20, 42);
+    doc.text(`Generated on: ${new Date().toLocaleDateString('en-GB')}`, 20, 49);
     
     // Summary calculations
     const incomeCash = transactions.filter(t => t.type === 'income' && t.category === 'Cash').reduce((sum, t) => sum + t.amount, 0);
@@ -340,7 +340,7 @@ export const generateCustomRangePDF = async (
     // Transaction details
     if (transactions.length > 0) {
       const tableData = transactions.map(tx => [
-        tx.date.toDate().toLocaleDateString(),
+        tx.date.toDate().toLocaleDateString('en-GB'),
         tx.type.charAt(0).toUpperCase() + tx.type.slice(1),
         tx.category,
         (tx.detail || '-').substring(0, 20),
@@ -361,8 +361,8 @@ export const generateCustomRangePDF = async (
     }
     
     // Save the PDF
-    const fromDateStr = fromDate.toLocaleDateString().replace(/\//g, '-');
-    const toDateStr = toDate.toLocaleDateString().replace(/\//g, '-');
+    const fromDateStr = fromDate.toLocaleDateString('en-GB').replace(/\//g, '-');
+    const toDateStr = toDate.toLocaleDateString('en-GB').replace(/\//g, '-');
     const filename = `${workplaceName}_${username.split('@')[0]}_Custom_${fromDateStr}_to_${toDateStr}.pdf`;
     doc.save(filename);
     

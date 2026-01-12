@@ -88,10 +88,9 @@ export default function TransactionForm({
       setDetail('');
       // Keep the selected date so user can add multiple transactions for the same date
       toast({ 
-  title: "Success!", 
-  // Change .toLocaleDateString() to .toLocaleDateString('en-GB')
-  description: `Transaction added to ${workplaceName} for ${transactionDate.toLocaleDateString('en-GB')}.` 
-});
+        title: "Success!", 
+        description: `Transaction added to ${workplaceName} for ${transactionDate.toLocaleDateString('en-GB')}.` 
+      });
       onTransactionAdded();
     } catch (error) {
       toast({ 
@@ -145,15 +144,14 @@ export default function TransactionForm({
                 <div className="space-y-2">
                     <Label htmlFor="transaction-date">Transaction Date</Label>
                     <Input 
-    id="transaction-date"
-    type="date" 
-    value={selectedDate} 
-    onChange={(e) => setSelectedDate(e.target.value)}
-    min={minDate}
-    max={maxDate}
-    // Add the invert class here:
-    className="w-full [&::-webkit-calendar-picker-indicator]:dark:invert"
-/>
+                        id="transaction-date"
+                        type="date" 
+                        value={selectedDate} 
+                        onChange={(e) => setSelectedDate(e.target.value)}
+                        min={minDate}
+                        max={maxDate}
+                        className="w-full [&::-webkit-calendar-picker-indicator]:dark:invert"
+                    />
                     <p className="text-xs text-muted-foreground">
                         You can select any date from the last 3 months to today
                     </p>
@@ -194,8 +192,8 @@ export default function TransactionForm({
                 </div>
                 
                 <Button type="submit" className="w-full">
-    Add Transaction for {selectedDate ? new Date(selectedDate).toLocaleDateString('en-GB') : 'Selected Date'}
-</Button>
+                    Add Transaction for {selectedDate ? new Date(selectedDate).toLocaleDateString('en-GB') : 'Selected Date'}
+                </Button>
             </form>
         </Tabs>
       </CardContent>
